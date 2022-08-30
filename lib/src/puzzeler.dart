@@ -24,19 +24,19 @@ class Puzzeler extends StatelessWidget {
         config: config,
         imageData: imageData,
       ),
-      child: const Ppuzzeler(),
+      child: const _Puzzeler(),
     );
   }
 }
 
-class Ppuzzeler extends StatefulWidget {
-  const Ppuzzeler();
+class _Puzzeler extends StatefulWidget {
+  const _Puzzeler();
 
   @override
-  State<Ppuzzeler> createState() => PpuzzelerState();
+  State<_Puzzeler> createState() => _PuzzelerState();
 }
 
-class PpuzzelerState extends State<Ppuzzeler> {
+class _PuzzelerState extends State<_Puzzeler> {
   @override
   Widget build(BuildContext context) {
     final _puzzelerCubit = BlocProvider.of<PuzzelerCubit>(context);
@@ -59,11 +59,11 @@ class PpuzzelerState extends State<Ppuzzeler> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) => DecoratedBox(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     border: Border(
                       bottom: _defaultBorderSide,
                       left: _defaultBorderSide,
-                      right: items.last == items[index] ? _defaultBorderSide : BorderSide.none,
+                      right: _defaultBorderSide,
                       top: _defaultBorderSide,
                     ),
                   ),
@@ -114,8 +114,7 @@ class PpuzzelerState extends State<Ppuzzeler> {
                         height: 40.0,
                         width: 40.0,
                         decoration: BoxDecoration(
-                          border: Border.all(),
-                          borderRadius: BorderRadius.circular(5.0),
+                          border: Border.all(width: 0.5),
                         ),
                         child: Center(
                           child: pieces[index].image,
@@ -128,8 +127,7 @@ class PpuzzelerState extends State<Ppuzzeler> {
                             height: 40.0,
                             width: 40.0,
                             decoration: BoxDecoration(
-                              border: Border.all(),
-                              borderRadius: BorderRadius.circular(5.0),
+                              border: Border.all(width: 0.5),
                             ),
                             child: Center(
                               child: pieces[index].image,

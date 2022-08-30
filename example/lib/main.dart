@@ -77,19 +77,22 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: FutureBuilder<List<int>>(
-        future: _loadImage(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Puzzeler(
-              imageData: snapshot.data!,
-            );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FutureBuilder<List<int>>(
+          future: _loadImage(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Puzzeler(
+                imageData: snapshot.data!,
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }
