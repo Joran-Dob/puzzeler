@@ -8,6 +8,7 @@ class PuzzelerState with _$PuzzelerState {
     required List<PuzzelerItem> items,
     required List<PuzzelerItem> pieces,
     required double aspectRatio,
+    required Image image,
   }) = _Loaded;
   const factory PuzzelerState.error({
     required String message,

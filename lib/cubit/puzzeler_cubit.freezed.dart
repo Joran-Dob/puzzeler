@@ -21,7 +21,7 @@ mixin _$PuzzelerState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<PuzzelerItem> items,
-            List<PuzzelerItem> pieces, double aspectRatio)
+            List<PuzzelerItem> pieces, double aspectRatio, material.Image image)
         loaded,
     required TResult Function(String message) error,
   }) =>
@@ -31,7 +31,7 @@ mixin _$PuzzelerState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
   }) =>
@@ -41,7 +41,7 @@ mixin _$PuzzelerState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -133,7 +133,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<PuzzelerItem> items,
-            List<PuzzelerItem> pieces, double aspectRatio)
+            List<PuzzelerItem> pieces, double aspectRatio, material.Image image)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -146,7 +146,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
   }) {
@@ -159,7 +159,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -254,7 +254,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<PuzzelerItem> items,
-            List<PuzzelerItem> pieces, double aspectRatio)
+            List<PuzzelerItem> pieces, double aspectRatio, material.Image image)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -267,7 +267,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
   }) {
@@ -280,7 +280,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -340,7 +340,8 @@ abstract class _$$_LoadedCopyWith<$Res> {
   $Res call(
       {List<PuzzelerItem> items,
       List<PuzzelerItem> pieces,
-      double aspectRatio});
+      double aspectRatio,
+      material.Image image});
 }
 
 /// @nodoc
@@ -357,6 +358,7 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$PuzzelerStateCopyWithImpl<$Res>
     Object? items = freezed,
     Object? pieces = freezed,
     Object? aspectRatio = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$_Loaded(
       items: items == freezed
@@ -371,6 +373,10 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$PuzzelerStateCopyWithImpl<$Res>
           ? _value.aspectRatio
           : aspectRatio // ignore: cast_nullable_to_non_nullable
               as double,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as material.Image,
     ));
   }
 }
@@ -381,7 +387,8 @@ class _$_Loaded implements _Loaded {
   const _$_Loaded(
       {required final List<PuzzelerItem> items,
       required final List<PuzzelerItem> pieces,
-      required this.aspectRatio})
+      required this.aspectRatio,
+      required this.image})
       : _items = items,
         _pieces = pieces;
 
@@ -401,10 +408,12 @@ class _$_Loaded implements _Loaded {
 
   @override
   final double aspectRatio;
+  @override
+  final material.Image image;
 
   @override
   String toString() {
-    return 'PuzzelerState.loaded(items: $items, pieces: $pieces, aspectRatio: $aspectRatio)';
+    return 'PuzzelerState.loaded(items: $items, pieces: $pieces, aspectRatio: $aspectRatio, image: $image)';
   }
 
   @override
@@ -415,7 +424,8 @@ class _$_Loaded implements _Loaded {
             const DeepCollectionEquality().equals(other._items, _items) &&
             const DeepCollectionEquality().equals(other._pieces, _pieces) &&
             const DeepCollectionEquality()
-                .equals(other.aspectRatio, aspectRatio));
+                .equals(other.aspectRatio, aspectRatio) &&
+            const DeepCollectionEquality().equals(other.image, image));
   }
 
   @override
@@ -423,7 +433,8 @@ class _$_Loaded implements _Loaded {
       runtimeType,
       const DeepCollectionEquality().hash(_items),
       const DeepCollectionEquality().hash(_pieces),
-      const DeepCollectionEquality().hash(aspectRatio));
+      const DeepCollectionEquality().hash(aspectRatio),
+      const DeepCollectionEquality().hash(image));
 
   @JsonKey(ignore: true)
   @override
@@ -436,11 +447,11 @@ class _$_Loaded implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<PuzzelerItem> items,
-            List<PuzzelerItem> pieces, double aspectRatio)
+            List<PuzzelerItem> pieces, double aspectRatio, material.Image image)
         loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(items, pieces, aspectRatio);
+    return loaded(items, pieces, aspectRatio, image);
   }
 
   @override
@@ -449,11 +460,11 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
   }) {
-    return loaded?.call(items, pieces, aspectRatio);
+    return loaded?.call(items, pieces, aspectRatio, image);
   }
 
   @override
@@ -462,13 +473,13 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(items, pieces, aspectRatio);
+      return loaded(items, pieces, aspectRatio, image);
     }
     return orElse();
   }
@@ -515,11 +526,13 @@ abstract class _Loaded implements PuzzelerState {
   const factory _Loaded(
       {required final List<PuzzelerItem> items,
       required final List<PuzzelerItem> pieces,
-      required final double aspectRatio}) = _$_Loaded;
+      required final double aspectRatio,
+      required final material.Image image}) = _$_Loaded;
 
   List<PuzzelerItem> get items;
   List<PuzzelerItem> get pieces;
   double get aspectRatio;
+  material.Image get image;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -590,7 +603,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<PuzzelerItem> items,
-            List<PuzzelerItem> pieces, double aspectRatio)
+            List<PuzzelerItem> pieces, double aspectRatio, material.Image image)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -603,7 +616,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
   }) {
@@ -616,7 +629,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<PuzzelerItem> items, List<PuzzelerItem> pieces,
-            double aspectRatio)?
+            double aspectRatio, material.Image image)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),

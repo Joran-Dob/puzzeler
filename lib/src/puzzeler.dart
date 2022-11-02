@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzeler/cubit/puzzeler_cubit.dart';
-import 'package:puzzeler/src/puzzeler_item.dart';
 import 'package:puzzeler/src/puzzeler_config.dart';
-import 'dart:ui' as ui;
+import 'package:puzzeler/src/puzzeler_item.dart';
 
 const _defaultBorderSide = BorderSide();
 
@@ -48,7 +47,7 @@ class _PuzzelerState extends State<_Puzzeler> {
           loading: () => const Center(
             child: CircularProgressIndicator(),
           ),
-          loaded: (items, pieces, aspectRatio) => ListView(
+          loaded: (items, pieces, aspectRatio, image) => ListView(
             children: [
               GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -136,6 +135,14 @@ class _PuzzelerState extends State<_Puzzeler> {
                         : Container(),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              Image(
+                image: image.image,
+                width: 200.0,
+                height: 200.0,
               ),
             ],
           ),

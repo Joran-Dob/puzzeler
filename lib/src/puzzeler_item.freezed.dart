@@ -110,7 +110,7 @@ class __$$_PuzzelerItemCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PuzzelerItem with DiagnosticableTreeMixin implements _PuzzelerItem {
+class _$_PuzzelerItem implements _PuzzelerItem {
   const _$_PuzzelerItem(
       {required this.id, required this.image, this.correct = false});
 
@@ -123,18 +123,8 @@ class _$_PuzzelerItem with DiagnosticableTreeMixin implements _PuzzelerItem {
   final bool correct;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PuzzelerItem(id: $id, image: $image, correct: $correct)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PuzzelerItem'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('image', image))
-      ..add(DiagnosticsProperty('correct', correct));
   }
 
   @override

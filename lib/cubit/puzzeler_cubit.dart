@@ -31,6 +31,7 @@ class PuzzelerCubit extends Cubit<PuzzelerState> {
   List<PuzzelerItem> items = [];
   List<PuzzelerItem> pieces = [];
   double aspectRatio = 1.0;
+  late Image image;
 
   Future<void> _init() async {
     emit(const PuzzelerState.loading());
@@ -40,22 +41,24 @@ class PuzzelerCubit extends Cubit<PuzzelerState> {
         items: items,
         pieces: pieces,
         aspectRatio: aspectRatio,
+        image: image,
       ),
     );
   }
 
   Future<void> _loadItems({int horizontalPieceCount = 3, int verticalPieceCount = 3}) async {
-    final image = imglib.decodeImage(_imageData)!;
+    image = Image.memory(_imageData as Uint8List);
+    final iLimage = imglib.decodeImage(_imageData)!;
 
-    final xLength = (image.width / horizontalPieceCount).round();
-    final yLength = (image.height / verticalPieceCount).round();
-    aspectRatio = image.width / image.height;
+    final xLength = (iLimage.width / horizontalPieceCount).round();
+    final yLength = (iLimage.height / verticalPieceCount).round();
+    aspectRatio = iLimage.width / iLimage.height;
     final pieceList = <imglib.Image>[];
 
     for (var y = 0; y < verticalPieceCount; y++) {
       for (var x = 0; x < horizontalPieceCount; x++) {
         pieceList.add(
-          imglib.copyCrop(image, x * xLength, y * yLength, xLength, yLength),
+          imglib.copyCrop(iLimage, x * xLength, y * yLength, xLength, yLength),
         );
       }
     }
@@ -92,6 +95,7 @@ class PuzzelerCubit extends Cubit<PuzzelerState> {
           items: items,
           pieces: pieces,
           aspectRatio: aspectRatio,
+          image: image,
         ),
       );
     }
